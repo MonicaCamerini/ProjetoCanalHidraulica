@@ -1,0 +1,166 @@
+﻿<Window x:Class="ProjetoCanaldeHidraulica.VazãoeNível"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoCanaldeHidraulica"
+        mc:Ignorable="d"
+        Title="Controle da Vazão" Height="450" Width="900" Icon="Imagens/Icone.png">
+    <Viewbox  Stretch="Fill">
+        <Grid HorizontalAlignment="Left" Height="395" VerticalAlignment="Top" Width="854" Background="White" RenderTransformOrigin="0.482,0.254">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Stretch="UniformToFill">
+                <Grid HorizontalAlignment="Left" Width="863" Height="50" Background="#FF0C3774" Margin="0,0,0,352">
+                    <ComboBox x:Name="PortaSerialCom4" Visibility="Collapsed" HorizontalAlignment="Left" Margin="153,12,0,0" VerticalAlignment="Top" Width="59"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="243,10,0,0" TextWrapping="Wrap" Text="Informações Gerais sobre Controle e Vazão no Canal" VerticalAlignment="Top" FontSize="16" Foreground="White" Height="28" Width="373"/>
+                    <Button x:Name="Relatorio" Content="Relatório" HorizontalAlignment="Left" Margin="754,10,0,0" VerticalAlignment="Top" Width="80" Height="28" BorderThickness="2" BorderBrush="#FF3E3131" Foreground="Black" Background="White" Click="Relatorio_Click"/>
+                    <Separator HorizontalAlignment="Left" Height="35" Margin="713,5,0,0" VerticalAlignment="Top" Width="36" Background="#FFFDFBFB" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                        <Separator.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Separator.RenderTransform>
+                    </Separator>
+                    <Separator HorizontalAlignment="Left" Height="35" Margin="73,5,0,0" VerticalAlignment="Top" Width="36" Background="#FFFDFBFB" BorderThickness="0" RenderTransformOrigin="0.5,0.5">
+                        <Separator.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Separator.RenderTransform>
+                    </Separator>
+                    <Button x:Name="Voltar4" Margin="25,2,806,8" Cursor="Hand" Foreground="White" Click="Voltar4_Click" RenderTransformOrigin="0.545,0.5">
+                        <Button.Background>
+                            <ImageBrush ImageSource="Imagens/left-arrow (2).png" Stretch="Uniform"/>
+                        </Button.Background>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Imagens/left-arrow (2).png"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <ImageBrush ImageSource="Imagens/icon (1).png" Stretch="Uniform" Opacity="0.5"/>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Viewbox>
+            <Grid HorizontalAlignment="Left" Height="154" Margin="10,73,0,0" VerticalAlignment="Top" Width="824" Background="#FF207CCB">
+                <TextBlock HorizontalAlignment="Left" Margin="405,10,0,0" TextWrapping="Wrap" Text="Dados de Leitura" VerticalAlignment="Top" Foreground="White" FontSize="14" FontWeight="Bold"/>
+                <Grid Margin="22,-27,714,105" Background="White" Height="71" VerticalAlignment="Bottom">
+                    <Image HorizontalAlignment="Left" Height="61" Margin="10,0,0,0" VerticalAlignment="Top" Width="61" Source="Imagens/drop (1).png"/>
+                </Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="144,45,0,0" TextWrapping="Wrap" Text="Variável de Processo - Vazão" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="VariavelProcesso" HorizontalAlignment="Left" Height="23" Margin="153,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+                <TextBlock HorizontalAlignment="Left" Margin="321,45,0,0" TextWrapping="Wrap" Text="Setpoint de Controle" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="Setpoint" HorizontalAlignment="Left" Height="23" Margin="312,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+                <TextBlock HorizontalAlignment="Left" Margin="476,48,0,0" TextWrapping="Wrap" Text="Velocidade mínima para que se tenha vazão (rpm):" VerticalAlignment="Top" Foreground="White"/>
+                <TextBlock HorizontalAlignment="Left" Margin="474,86,0,0" TextWrapping="Wrap" Text="Velocidade máxima para que se tenha vazão (rpm):" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="VelocidadeMinima" HorizontalAlignment="Left" Height="23" Margin="748,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FF207CCB" Foreground="White" TextAlignment="Center"/>
+                <TextBox x:Name="VelocidadeMaxima" HorizontalAlignment="Left" Height="23" Margin="748,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FF207CCB" Foreground="White" TextAlignment="Center"/>
+                <Button x:Name="LeituraVariaveisBotao" Margin="22,99,754,10" Cursor="Hand" Click="LeituraVariaveisBotao_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/refresh.png"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Imagens/refresh.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="Imagens/refresh.png" Stretch="Uniform" Opacity="0.5"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <TextBlock HorizontalAlignment="Left" Margin="255,99,0,0" TextWrapping="Wrap" Text="Saída do PID (%)" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox x:Name="SaídaPID" HorizontalAlignment="Left" Height="23" Margin="229,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+                <TextBlock HorizontalAlignment="Left" Margin="655,121,0,0" TextWrapping="Wrap" Text="Fundo de Escala:" VerticalAlignment="Top" Foreground="White" Height="23"/>
+                <TextBox x:Name="FundoEscala" HorizontalAlignment="Left" Height="23" Margin="748,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="63" Background="#FF207CCB" Foreground="White" TextAlignment="Center"/>
+                <Button x:Name="AjudaFundoEscala" HorizontalAlignment="Left" Margin="635,121,0,0" VerticalAlignment="Top" Width="15" Height="15" Click="AjudaFundoEscala_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/png.jpg"/>
+                    </Button.Background>
+                </Button>
+
+            </Grid>
+
+            <Grid HorizontalAlignment="Left" Height="140" Margin="62,239,0,0" VerticalAlignment="Top" Width="254" Background="#FFD6ECFB">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Ganho Proporcional:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="37,36,0,0" TextWrapping="Wrap" Text="Ganho Integral:" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="24,62,0,0" TextWrapping="Wrap" Text="Ganho Derivativo:" VerticalAlignment="Top"/>
+                <TextBox x:Name="GanhoProporcional" HorizontalAlignment="Left" Height="17" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFD6ECFB" FontSize="10"/>
+                <TextBox x:Name="GanhoIntegral" HorizontalAlignment="Left" Height="17" Margin="123,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFD6ECFB" FontSize="10"/>
+                <TextBox x:Name="GanhoDerivativo" HorizontalAlignment="Left" Height="17" Margin="123,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFD6ECFB" FontSize="10"/>
+                <TextBlock HorizontalAlignment="Left" Margin="41,86,0,0" TextWrapping="Wrap" Text="Filtro Setpoint:" VerticalAlignment="Top"/>
+                <TextBox x:Name="FiltroSetpoint" HorizontalAlignment="Left" Height="17" Margin="123,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFD6ECFB" FontSize="10"/>
+                <TextBlock HorizontalAlignment="Left" Margin="24,112,0,0" TextWrapping="Wrap" Text="Ação de Controle:" VerticalAlignment="Top"/>
+                <TextBox x:Name="AçãoControle" HorizontalAlignment="Left" Height="17" Margin="123,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Background="#FFD6ECFB" FontSize="10"/>
+            </Grid>
+
+
+            <Grid HorizontalAlignment="Left" Height="140" Margin="342,239,0,0" VerticalAlignment="Top" Width="482" Background="#FFD6ECFB">
+                <TextBlock HorizontalAlignment="Left" Margin="153,10,0,0" TextWrapping="Wrap" Text="DEFINA AS VARIÁVEIS SE NECESSÁRIO:" VerticalAlignment="Top" TextDecorations="Underline"/>
+                <TextBlock HorizontalAlignment="Left" Margin="20,32,0,0" TextWrapping="Wrap" Text="Velocidade Mínima de Vazão (rpm):" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="18,87,0,0" TextWrapping="Wrap" Text="Velocidade Máxima de Vazão (rpm):" VerticalAlignment="Top"/>
+                <TextBox x:Name="VelocidadeMinimaEscrita" HorizontalAlignment="Left" Height="24" Margin="44,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Background="#FFD6ECFB" FontSize="10"/>
+                <TextBox x:Name="VelocidadeMaximaEscrita" HorizontalAlignment="Left" Height="24" Margin="44,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Background="#FFD6ECFB" FontSize="10"/>
+                <Button x:Name="ConfirmaVelocidadeMinima" Content="OK" HorizontalAlignment="Left" Margin="153,53,0,0" VerticalAlignment="Top" Width="58" Background="Black" Foreground="White" Click="ConfirmaVelocidadeMinima_Click" Height="24"/>
+                <Button x:Name="ConfirmaVelocidadeMaxima" Content="OK" HorizontalAlignment="Left" Margin="149,111,0,0" VerticalAlignment="Top" Width="58" Background="Black" Foreground="White" Click="ConfirmaVelocidadeMaxima_Click" Height="24"/>
+                <TextBlock HorizontalAlignment="Left" Margin="300,53,0,0" TextWrapping="Wrap" Text="Vazão Máxima (litros/seg):" VerticalAlignment="Top"/>
+                <TextBox x:Name="VazaoMaxima" HorizontalAlignment="Left" Height="24" Margin="300,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="95" Background="#FFD6ECFB" FontSize="10"/>
+                <Button x:Name="ConfirmaVazaoMaxima" Content="OK" HorizontalAlignment="Left" Margin="400,79,0,0" VerticalAlignment="Top" Width="58" Background="Black" Foreground="White" Height="24" Click="ConfirmaVazaoMaxima_Click"/>
+                <Button x:Name="AjudaVazaoMaxima" HorizontalAlignment="Left" Margin="444,54,0,0" VerticalAlignment="Top" Width="15" Height="15" Click="AjudaVazaoMaxima_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/png.jpg"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+
+        </Grid>
+    </Viewbox>
+</Window>

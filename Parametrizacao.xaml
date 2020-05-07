@@ -1,0 +1,17 @@
+﻿<Window x:Class="ProjetoCanaldeHidraulica.Parametrizacao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoCanaldeHidraulica"
+        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="Parametrização" Height="450" Width="800" Icon="Imagens/Icone.png">
+    <Viewbox>
+        <Grid Width="753">
+            <TextBlock HorizontalAlignment="Left" Margin="194,18,0,0" TextWrapping="Wrap" Text="Lista com parâmetros configurados no Inversor de Frequência" VerticalAlignment="Top" FontSize="14"/>
+            <Button x:Name="Salvar" Content="SALVAR" HorizontalAlignment="Left" Margin="301,342,0,0" VerticalAlignment="Top" Width="160" Height="37" Click="Salvar_Click" />
+            <TextBox x:Name="EscritaParametrizacao" AcceptsReturn="True"  TextOptions.TextFormattingMode="Ideal" Height="274" Margin="10,63,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        </Grid>
+    </Viewbox>
+</Window>

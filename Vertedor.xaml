@@ -1,0 +1,33 @@
+﻿<Window x:Class="ProjetoCanaldeHidraulica.Vertedor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoCanaldeHidraulica"
+        mc:Ignorable="d"
+        Title="Configuração do Vertedor" Height="250" Width="400" WindowStyle="SingleBorderWindow" Icon="Imagens/Icone.png" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="ConfVertedor"  Content="CONFIRMA" Background="#FF45506E" HorizontalAlignment="Left" VerticalAlignment="Top" Width="324" Height="26" Foreground="#FFFBF7F7" Margin="42,169,0,0" FontSize="10" Click="ConfVertedor_Click"/>
+        <ComboBox x:Name="ComboVertedor" SelectionChanged="ComboVertedor_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="207" Height="25" Margin="48,37,0,0">
+            <ComboBoxItem Content="Triangular 90°" FontSize="10"/>
+            <ComboBoxItem Content="Triangular 120°" FontSize="10"/>
+            <ComboBoxItem Content="Triangular 135°" FontSize="10"/>
+            <ComboBoxItem Content="Triangular 90° truncado" FontSize="10"/>
+            <ComboBoxItem Content="Triangular 120° truncado" FontSize="10"/>
+            <ComboBoxItem Content="Triangular trapezoidal (Tipo Cipoletti)" FontSize="10"/>
+
+        </ComboBox>
+        <TextBox x:Name="VertedorEscolhido" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" Margin="48,67,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="48,10,0,0" TextWrapping="Wrap" Text="Escolha o vertedor utilizado no canal" VerticalAlignment="Top" Width="209" Height="22" TextAlignment="Center"/>
+        <TextBox x:Name="DefiniçãoL" Visibility="Hidden" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" Margin="216,101,0,0"/>
+        <TextBlock x:Name="DefiniçãoLTexto" HorizontalAlignment="Left" Visibility="Hidden" Margin="48,101,0,0" TextWrapping="Wrap" Text="Largura da soleira em METROS:" VerticalAlignment="Top" FontSize="9" Height="19" Width="163" TextAlignment="Center"/>
+        <TextBox x:Name="DefiniçãoHb" Visibility="Hidden" HorizontalAlignment="Left" Height="19" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" Margin="216,132,0,0"/>
+        <TextBlock x:Name="DefiniçãoHbTexto" HorizontalAlignment="Left" Visibility="Hidden" Margin="77,132,0,0" TextWrapping="Wrap" Text="Altura Hb em METROS:" VerticalAlignment="Top" FontSize="9" Height="19" Width="134" TextAlignment="Center"/>
+        <TextBox x:Name="Teste1" HorizontalAlignment="Left" Height="16" Margin="285,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="RecebeVazao" HorizontalAlignment="Left" Height="16" Margin="282,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="300,21,0,0" TextWrapping="Wrap" Text="Vazão Lida:" VerticalAlignment="Top" FontSize="10"/>
+        <TextBlock HorizontalAlignment="Left" Margin="363,39,0,0" TextWrapping="Wrap" Text="l/s" VerticalAlignment="Top" FontSize="9"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,58,0,0" TextWrapping="Wrap" Text="Carga Hidráulica:" VerticalAlignment="Top" FontSize="10"/>
+        <TextBlock HorizontalAlignment="Left" Margin="366,76,0,0" TextWrapping="Wrap" Text="cm" VerticalAlignment="Top" FontSize="9"/>
+    </Grid>
+</Window>

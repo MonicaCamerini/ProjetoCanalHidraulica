@@ -1,0 +1,125 @@
+﻿<Window x:Class="ProjetoCanaldeHidraulica.Alarme"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetoCanaldeHidraulica"
+        mc:Ignorable="d"
+        Title="Alarme" Height="450" Width="800" Icon="Imagens/Icone.png">
+    <Viewbox>
+        <Grid>
+            <Grid x:Name="Alarmes" HorizontalAlignment="Left" Width="817" Height="430" Background="White" Margin="-10,0,-12,0">
+
+                <lvc:AngularGauge x:Name="GraficoVelocidade" Value="{Binding Value}" FromValue="0" ToValue="1700" 
+                          LabelsStep="200" TicksStep="50" Wedge="1700"
+                          TicksForeground="White" Foreground="White" 
+                          FontWeight="Bold" FontSize="11"
+                          SectionsInnerRadius="0.6" HorizontalAlignment="Right" Width="278" Margin="0,221,201,51">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="1000" Fill="#FF30B014"/>
+                        <lvc:AngularSection FromValue="1000" ToValue="1500" Fill="#FFDEF551"/>
+                        <lvc:AngularSection FromValue="1500" ToValue="1700" Fill="#FFF51313"/>
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+
+                <lvc:AngularGauge x:Name="GraficoVazao" Value="{Binding Value}" FromValue="0" ToValue="250" 
+                          LabelsStep="20" TicksStep="50" Wedge="250"
+                          TicksForeground="White" Foreground="White" 
+                          FontWeight="Bold" FontSize="10"
+                          SectionsInnerRadius="0.6" HorizontalAlignment="Right" Width="283" Margin="0,229,-19,23">
+                    <lvc:AngularGauge.Sections>
+                        <lvc:AngularSection FromValue="0" ToValue="100" Fill="#FF30B014"/>
+                        <lvc:AngularSection FromValue="100" ToValue="165" Fill="#FFDEF551"/>
+                        <lvc:AngularSection FromValue="165" ToValue="250" Fill="#FFF51313"/>
+                    </lvc:AngularGauge.Sections>
+                </lvc:AngularGauge>
+                <ComboBox x:Name="PortaSerialCom4" Visibility="Collapsed" HorizontalAlignment="Left" Margin="153,12,0,0" VerticalAlignment="Top" Width="59"/>
+                <Button x:Name="EmergenciaBotao1" Content="BOTÃO DE EMERGÊNCIA" Margin="524,387,118,11" Foreground="#FFFDF7F7" Background="#FFD32727" Cursor="Hand" BorderBrush="#FFF31A1A" Click =" EmergenciaBotao1_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#FF080707"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Red"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Rectangle HorizontalAlignment="Left" Height="42" Margin="515,382,0,0" Stroke="#FFD32727" VerticalAlignment="Top" Width="193" StrokeThickness="3"/>
+                <TextBlock HorizontalAlignment="Left" Margin="335,12,0,0" TextWrapping="Wrap" Text="ALARMES E FALHAS" VerticalAlignment="Top" FontSize="20" Foreground="#FF131010"/>
+                <Button x:Name="Voltar" Margin="10,0,777,395" Cursor="Hand">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/left-arrow (1).png" Stretch="Uniform"/>
+                    </Button.Background>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Imagens/left-arrow (1).png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="Imagens/left-arrow (1).png" Stretch="Uniform" Opacity="0.5"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <ListBox x:Name="LeituraAlarmes" HorizontalAlignment="Left" Height="283" Margin="10,90,0,0" VerticalAlignment="Top" Width="146" Background="White" BorderBrush="#FFFF040F" SelectionChanged="LeituraAlarmes_SelectionChanged"/>
+                <ListBox x:Name="LeituraFalhas" HorizontalAlignment="Left" Height="283" Margin="179,90,0,0" VerticalAlignment="Top" Width="154" Background="White" Foreground="Black" BorderBrush="#FFF11818" SelectionChanged="AvisosGeraisFalha_SelectionChanged"/>
+                <Separator HorizontalAlignment="Left" Height="100" Margin="16,168,0,0" VerticalAlignment="Top" Width="304" RenderTransformOrigin="0.5,0.5" Background="Black">
+                    <Separator.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Separator.RenderTransform>
+                </Separator>
+                <TextBlock HorizontalAlignment="Left" Margin="44,69,0,0" TextWrapping="Wrap" Text="Alarme Atual" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="227,69,0,0" TextWrapping="Wrap" Text="Falha Atual" VerticalAlignment="Top"/>
+                <Rectangle HorizontalAlignment="Left" Height="21" Margin="10,65,0,0" Stroke="#FFFF0202" VerticalAlignment="Top" Width="146"/>
+                <Rectangle HorizontalAlignment="Left" Height="21" Margin="179,65,0,0" Stroke="#FFFF0202" VerticalAlignment="Top" Width="154"/>
+                <TextBox x:Name="AlertaConexão" HorizontalAlignment="Left" Height="39" Margin="361,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" BorderBrush="Black"/>
+                <TextBox x:Name="AlertaEstadoInversor" HorizontalAlignment="Left" Height="39" Margin="361,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" BorderBrush="Black"/>
+                <TextBox x:Name="AvisosGerais" HorizontalAlignment="Left" Height="39" Margin="361,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" BorderBrush="Black"/>
+                <TextBox x:Name="AvisosGeraisFalha" HorizontalAlignment="Left" Height="39" Margin="588,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" BorderBrush="Black"/>
+                <Button Content="ATUALIZAR LEITURAS" HorizontalAlignment="Left" Margin="625,14,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click" Height="33"/>
+                <TextBlock HorizontalAlignment="Left" Margin="690,202,0,0" TextWrapping="Wrap" Text="Vazão" VerticalAlignment="Top"/>
+                <TextBlock HorizontalAlignment="Left" Margin="453,200,0,0" TextWrapping="Wrap" Text="Rotação" VerticalAlignment="Top"/>
+                <TextBox x:Name="VelocidadeBD" HorizontalAlignment="Left" Visibility="Hidden"  Height="23" Margin="338,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                <TextBox x:Name="VazaoDB" HorizontalAlignment="Left" Visibility="Hidden" Height="23" Margin="737,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
+                <Button x:Name="LimparLista" Content="Limpar Lista" HorizontalAlignment="Left" Margin="94,387,0,0" VerticalAlignment="Top" Width="144" Height="37" Background="White" Click="LimparLista_Click"/>
+            </Grid>
+
+        </Grid>
+    </Viewbox>
+</Window>
